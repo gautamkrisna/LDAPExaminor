@@ -26,17 +26,17 @@ public class Search
         String password = "Citrix_123";
         String searchBase = "OU=CSLABUSERS,DC=csblr,DC=com";
         String searchFilter = "(sAMAccountName=Gautam)";
-        String retStr = "Return message starts here";
-        retStr = retStr + "\n"+"host :"+ ldapHost  + "\n";
+        String retStr = "Retrieved attributes : "+"\n";
+        /**retStr = retStr + "\n"+"host :"+ ldapHost  + "\n";
         retStr = retStr +"Port :"+ ldapPort+ "\n";
         retStr = retStr +"Trying to connect " +"\n" ;
         retStr = retStr +"Username : " + loginDN +"\n";
-        retStr = retStr +"Password : " + password + "\n";
+        retStr = retStr +"Password : " + password + "\n"; */
 
         LDAPConnection lc = new LDAPConnection( 20000);
 
         try {
-            retStr = retStr +"Trying to connect " +"\n" ;
+            //retStr = retStr +"Trying to connect " +"\n" ;
             System.out.println("\n" + "retString in the Object : "+ retStr + "\n");
             System.out.println("\n" + "Starting new LDAP Connection : " + "\n");
             lc.connect( ldapHost, ldapPort );  // connect to the server
@@ -77,7 +77,7 @@ public class Search
                 System.out.println("\n" + nextEntry.getDN());
                 retStr = retStr + nextEntry.getDN();
                 System.out.println("  Attributes: ");
-                retStr = retStr + ("  Attributes: ");
+                retStr = retStr + "\n" +("  Attributes: ");
 
                 LDAPAttributeSet attributeSet = nextEntry.getAttributeSet();
                 Iterator allAttributes = attributeSet.iterator();

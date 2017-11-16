@@ -41,7 +41,7 @@ public class DisplayMessageActivity extends AppCompatActivity {
         protected String doInBackground(String... strings) {
             System.out.println("\n"+"Inside the Async Task"+"\n");
             //Retreviging LDAP attributes
-            String retVal;
+            //String retVal; To be deleted.
             System.out.println("\n" + "Starting new Object in AsyncTask in the background : " + "\n");
             Search obj = new Search();
             System.out.println("\n" + "new Object created in the Back ground" + "\n");

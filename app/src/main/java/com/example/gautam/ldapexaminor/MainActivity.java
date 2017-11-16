@@ -27,6 +27,5 @@ public class MainActivity extends AppCompatActivity {
         System.out.println("Main activity message : " + message);
         startActivity(intent);
     }
-
-
+    
 }
