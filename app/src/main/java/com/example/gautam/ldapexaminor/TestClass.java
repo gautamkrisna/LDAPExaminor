@@ -8,7 +8,7 @@ public class TestClass {
     public static void main ( String[] args ) {
         String retVal;
         Search obj = new Search();
-        retVal = obj.ldapMethod();
+        retVal = obj.ldapMethod("(sAMAccountName=Gautam)");
         System.out.println("\n" + "Return Value : " + retVal);
     }
 }

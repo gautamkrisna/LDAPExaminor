@@ -1,7 +1,6 @@
 package com.example.gautam.ldapexaminor;
 
 import android.content.Intent;
-import android.os.AsyncTask;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.View;
@@ -21,11 +20,15 @@ public class MainActivity extends AppCompatActivity {
 
     public void sendMessage ( View view ) {
         Intent intent = new Intent(this, DisplayMessageActivity.class);
-        EditText editText = (EditText) findViewById(R.id.editText6);
-        String message = editText.getText().toString();
-        intent.putExtra(EXTRA_MESSAGE, message);
-        System.out.println("Main activity message : " + message);
+
+        // getting search user text
+        EditText edtSearchUser = (EditText) findViewById(R.id.editSearchUser);
+        String strSerchUser = edtSearchUser.getText().toString();
+
+        System.out.println("Search user : "+ strSerchUser );
+        intent.putExtra(EXTRA_MESSAGE, strSerchUser);
+        System.out.println("Main activity message : " + strSerchUser);
         startActivity(intent);
     }
-    
+
 }

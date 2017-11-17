@@ -16,7 +16,7 @@ import java.io.UnsupportedEncodingException;
 
 public class Search
 {
-    public String ldapMethod ( )
+    public String ldapMethod ( String strSearchUser )
     {
         int ldapPort = LDAPConnection.DEFAULT_PORT;
         int searchScope = LDAPConnection.SCOPE_SUB;
@@ -25,18 +25,16 @@ public class Search
         String loginDN  = "administrator@csblr.com";
         String password = "Citrix_123";
         String searchBase = "OU=CSLABUSERS,DC=csblr,DC=com";
-        String searchFilter = "(sAMAccountName=Gautam)";
-        String retStr = "Retrieved attributes : "+"\n";
-        /**retStr = retStr + "\n"+"host :"+ ldapHost  + "\n";
-        retStr = retStr +"Port :"+ ldapPort+ "\n";
-        retStr = retStr +"Trying to connect " +"\n" ;
-        retStr = retStr +"Username : " + loginDN +"\n";
-        retStr = retStr +"Password : " + password + "\n"; */
+        //String searchFilter = "(sAMAccountName=Gautam)";
+        String searchFilter = "(sAMAccountName="+strSearchUser+")";
+        System.out.println("\n"+ "Class.Search - Search filter : " + searchFilter + "\n");
+        String retStr = "";
+
 
         LDAPConnection lc = new LDAPConnection( 20000);
 
         try {
-            //retStr = retStr +"Trying to connect " +"\n" ;
+
             System.out.println("\n" + "retString in the Object : "+ retStr + "\n");
             System.out.println("\n" + "Starting new LDAP Connection : " + "\n");
             lc.connect( ldapHost, ldapPort );  // connect to the server
@@ -74,10 +72,10 @@ public class Search
                         continue;
                 }
 
-                System.out.println("\n" + nextEntry.getDN());
-                retStr = retStr + nextEntry.getDN();
-                System.out.println("  Attributes: ");
-                retStr = retStr + "\n" +("  Attributes: ");
+                System.out.println("\n"+ "class.Search - Get DN : " + nextEntry.getDN());
+                retStr = retStr + nextEntry.getDN() +"\n"+"---------------------------------------------"+"\n"+"\n";
+                //System.out.println("\n"+ "class.Search -  Attributes: ");
+                //retStr = retStr + "\n" +("  Attributes: ");
 
                 LDAPAttributeSet attributeSet = nextEntry.getAttributeSet();
                 Iterator allAttributes = attributeSet.iterator();
@@ -88,9 +86,10 @@ public class Search
                             (LDAPAttribute)allAttributes.next();
 
                     String attributeName = attribute.getName();
+                    String attributeValue = attribute.getStringValue().trim().toUpperCase();
 
-                    System.out.println("    " + attributeName);
-                    retStr = retStr + ("    " + attributeName);
+                    System.out.println("class.search - checkpoint    " + attributeName);
+                    retStr = retStr + ( attributeName + "  :> "+"\n"+ "     " + attributeValue + "\n" + "\n");
 
                     Enumeration allValues = attribute.getStringValues();
 
