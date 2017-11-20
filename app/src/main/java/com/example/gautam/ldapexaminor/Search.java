@@ -16,17 +16,23 @@ import java.io.UnsupportedEncodingException;
 
 public class Search
 {
-    public String ldapMethod ( String strSearchUser )
+    public String ldapMethod ( String strLDAPSrvr,  //LDAP Server IP
+                               String strLoginUser,  // LDAP admin user
+                               String strLoginPass,  // LDAP admin user password
+                               String strSearchBase,  //Example : "OU=CSLABUSERS,DC=csblr,DC=com";
+                               String strSearchKey,   // Example : sAMAccountName
+                               String strSearchVar)   // Example : Gautam
     {
         int ldapPort = LDAPConnection.DEFAULT_PORT;
         int searchScope = LDAPConnection.SCOPE_SUB;
         int ldapVersion  = LDAPConnection.LDAP_V3;
-        String ldapHost = "10.106.128.18";
-        String loginDN  = "administrator@csblr.com";
-        String password = "Citrix_123";
-        String searchBase = "OU=CSLABUSERS,DC=csblr,DC=com";
+        String ldapHost = strLDAPSrvr;
+        String loginDN  = strLoginUser ;
+        String password = strLoginPass ;
+        //String searchBase = "OU=CSLABUSERS,DC=csblr,DC=com";
+        String searchBase = strSearchBase;
         //String searchFilter = "(sAMAccountName=Gautam)";
-        String searchFilter = "(sAMAccountName="+strSearchUser+")";
+        String searchFilter = "("+strSearchKey+"="+strSearchVar+")";
         System.out.println("\n"+ "Class.Search - Search filter : " + searchFilter + "\n");
         String retStr = "";
 
@@ -115,13 +121,14 @@ public class Search
 
         }
         catch( LDAPException e ) {
-            System.out.println( "Error: Unable to connect, Exception " );
-            System.out.println( "Error: " + e.toString() );
+            retStr = "Error: Unable to connect, Exception : " + "\n" + e.toString();
+            System.out.println( retStr );
+            return retStr;
 
         }
         catch( UnsupportedEncodingException e ) {
-            System.out.println( "Error: Unsupported Encoding exception" );
-            System.out.println( "Error: " + e.toString() );
+            retStr = "Error: Unsupported Encoding exception : " + "\n" + e.toString();
+            System.out.println( retStr );
         }
 
 

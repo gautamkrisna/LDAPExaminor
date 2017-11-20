@@ -12,7 +12,7 @@
         android:layout_height="wrap_content"
         android:layout_marginStart="16dp"
         android:layout_marginTop="16dp"
-        android:text="Enter server and port"
+        android:text="Enter server IP"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
 
@@ -24,7 +24,7 @@
         android:layout_marginTop="8dp"
         android:ems="10"
         android:inputType="textPersonName"
-        android:text="ldap://10.106.128.18:389"
+        android:text="10.106.128.18"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/txtServerPort" />
 
@@ -56,7 +56,7 @@
         android:layout_height="wrap_content"
         android:layout_marginStart="16dp"
         android:layout_marginTop="16dp"
-        android:text="Server Base DN"
+        android:text="Search Base DN"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/edtSrvrFQDN" />
 
@@ -68,7 +68,7 @@
         android:layout_marginTop="8dp"
         android:ems="10"
         android:inputType="textPersonName"
-        android:text="DC=csblr,DC=com"
+        android:text="OU=CSLABUSERS,DC=csblr,DC=com"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/txtSrvrDN" />
 
@@ -78,12 +78,12 @@
         android:layout_height="wrap_content"
         android:layout_marginStart="16dp"
         android:layout_marginTop="16dp"
-        android:text="Search User"
+        android:text="Admin User"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/edtSrvrBaseDN" />
 
     <EditText
-        android:id="@+id/edtSearchUser"
+        android:id="@+id/edtAdminUser"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginStart="16dp"
@@ -103,7 +103,7 @@
         android:inputType="textPassword"
         android:text="Citrix_123"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/edtSearchUser" />
+        app:layout_constraintTop_toBottomOf="@+id/edtAdminUser" />
 
     <TextView
         android:id="@+id/txtTestUser"
